@@ -3,21 +3,22 @@ package org.example
 import java.beans.beancontext.BeanContextChildComponentProxy
 
 fun main() {
-    var quotaMensual = 6.0
-    var quotaVariable = 0.0
+
+    menuApp()
+    var quotaFixa = 6.0
+    var precioPorLitro = 0.0
     val errorMSG1 = "Has de introduir un numero enter!"
 
-    println("Benvingut al programa per calcular el cost del teu aigua!")
 
-        val litres = ("Quants litres has gastat aquest mes?")
-        val comprobarAigua = readInt(litres, errorMSG1)
+        val litresMSG = ("Quants litres has gastat aquest mes?")
+        val litres = readInt(litresMSG, errorMSG1)
 
-        if (comprobarAigua in 0..49) {
-            quotaVariable = 0.0
-        } else if (comprobarAigua in 50..200) {
-            quotaVariable = 0.15
-        } else if (comprobarAigua > 200) {
-            quotaVariable = 0.30
+        if (litres in 0..49) {
+            precioPorLitro = 0.0
+        } else if (litres in 50..200) {
+            precioPorLitro = 0.15
+        } else if (litres > 200) {
+            precioPorLitro = 0.30
         }
 
 
@@ -40,7 +41,7 @@ fun main() {
                 descuento = 0
                 println("Mentiros!!!")
             }
-        } while (numFamilia > 0)
+        } while (numFamilia == 0)
     } else {
         println("No tens descompte")
         descuento = 0
@@ -51,9 +52,13 @@ fun main() {
     val boSocial = readBoolean(boSocialMSG, errorMSG2)
 
     if (boSocial) {
-        quotaMensual = 3.0
+        quotaFixa = 3.0
+        descuento = 80
     }
 
+    var quotaVariable = ((precioPorLitro*litres ) - ((precioPorLitro*litres)) * descuento / 100)
+    val preuFinal = quotaVariable + quotaFixa
 
+    println("$preuFinal€")
 
 }
