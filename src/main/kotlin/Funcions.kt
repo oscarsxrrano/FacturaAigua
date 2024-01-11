@@ -13,14 +13,23 @@ fun menuApp() {
             "\nBenvingut al programa on podràs calcular quant has de pagar en aigua!")
 }
 
+fun preuTotal(
+    quotaFixa: Double,
+    precioPorLitro: Double,
+    litres: Int,
+    descuento: Int
+): Double {
+    val quotaVariable = ((precioPorLitro * litres) - ((precioPorLitro * litres)) * descuento / 100)
+    return quotaVariable + quotaFixa
+}
+
 fun resum(quotaFixa: Double,
           precioPorLitro: Double,
           litres: Int,
-          descuento: Int
+          descuento: Int,
+          preuFinal: Double
 ):String {
 
-    val quotaVariable = ((precioPorLitro*litres ) - ((precioPorLitro*litres)) * descuento / 100)
-    val preuFinal = quotaVariable + quotaFixa
 
     val sortida:String = println(WHITE_BACKGROUND_BRIGHT + BLUE_BOLD +"\n" + BLACK_BACKGROUND + YELLOW_BOLD_BRIGHT +
             "Amb aquestes dades, has de pagar $preuFinal€ al mes\n" +

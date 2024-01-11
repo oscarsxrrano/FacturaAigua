@@ -24,7 +24,7 @@ fun main() {
             precioPorLitro = 0.30
         }
 
-        val familiaMSG = ("Tens familia nombrosa o monoparental?")
+        val familiaMSG = ("Tens familia nombrosa o monoparental? (Si tens alguna d'aquestes dues fica true/false)")
         val familia = readBoolean(familiaMSG, errorMSG2)
 
         // Comprobem si la familia es monoparental o familia numerosa, i apliquem descomptes segons el numero de persones
@@ -59,7 +59,9 @@ fun main() {
         }
 
 
-        resum(quotaFixa, precioPorLitro, litres, descuento)
+        val preuFinal = preuTotal(quotaFixa, precioPorLitro, litres, descuento)
+
+        resum(quotaFixa, precioPorLitro, litres, descuento, preuFinal)
 
         val calcul = readBoolean(WHITE_BACKGROUND_BRIGHT + BLUE_BOLD + "Vols tornar a començar?", errorMSG2)
         if (!calcul) println("Gracies! Fins la propera!")
